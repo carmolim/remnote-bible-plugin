@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/gh/remnoteio/remnote-api@latest/RemNoteAPI.js"></script>
+    <title>Add a Bible verse</title>
+</head>
+
+<body>
+
+    <h1 id="title">Add a Bible verse</h1>
+
+    <form id="search">
+
+        <select id="version" id="version" name="version" id="">
+            <option value="kjv">King James Version</option>
+            <option value="bbe">Bible in Basic English</option>
+            <option value="acf">Almeida Corrigida Fiel</option>
+            <option value="nvi">Nova Versão internacional</option>
+            <option value="apee">La Bible de l'Épée</option>
+        </select>
+
+        <select id="book" name="book">
+            <option value="">Select a book</option>
+            <option value="gn">Genesis</option>
+            <option value="ex">Exodus</option>
+            <option value="lv">Leviticus</option>
+            <option value="nm">Numbers</option>
+            <option value="dt">Deuteronomy</option>
+            <option value="js">Joshua</option>
+            <option value="jz">Judges</option>
+            <option value="rt">Ruth</option>
+            <option value="1sm">1 Samuel</option>
+            <option value="2sm">2 Samuel</option>
+            <option value="1rs">1 Kings</option>
+            <option value="2rs">2 Kings</option>
+            <option value="1cr">1 Chronicles</option>
+            <option value="2cr">2 Chronicles</option>
+            <option value="ed">Ezra</option>
+            <option value="ne">Nehemiah</option>
+            <option value="et">Esther</option>
+            <option value="job">Job</option>
+            <option value="sl">Psalms</option>
+            <option value="pv">Proverbs</option>
+            <option value="ec">Ecclesiastes</option>
+            <option value="ct">Song of Songs</option>
+            <option value="is">Isaiah</option>
+            <option value="jr">Jeremiah</option>
+            <option value="lm">Lamentations</option>
+            <option value="ez">Ezekiel</option>
+            <option value="dn">Daniel</option>
+            <option value="os">Hosea</option>
+            <option value="jl">Joel</option>
+            <option value="am">Amos</option>
+            <option value="ob">Obadiah</option>
+            <option value="jn">Jonah</option>
+            <option value="mq">Micah</option>
+            <option value="na">Nahum</option>
+            <option value="hc">Habakkuk</option>
+            <option value="sf">Zephaniah</option>
+            <option value="ag">Haggai</option>
+            <option value="zc">Zacarias</option>
+            <option value="ml">Malachi</option>
+            <option value="mt">Matthew</option>
+            <option value="mc">Mark</option>
+            <option value="lc">Luke</option>
+            <option value="jo">John</option>
+            <option value="at">Acts of the Apostles</option>
+            <option value="rm">Romans</option>
+            <option value="1co">1 Corinthians</option>
+            <option value="2co">2 Corinthians</option>
+            <option value="gl">Galatians</option>
+            <option value="ef">Ephesians</option>
+            <option value="fp">Philippians</option>
+            <option value="cl">Colossians</option>
+            <option value="1ts">1 Thessalonians</option>
+            <option value="2ts">2 Thessalonians</option>
+            <option value="1tm">1 Timothy</option>
+            <option value="2tm">2 Timothy</option>
+            <option value="tt">Titus</option>
+            <option value="fm">Filemom</option>
+            <option value="hb">Hebrews</option>
+            <option value="tg">James</option>
+            <option value="1pe">1 Peter</option>
+            <option value="2pe">2 Peter</option>
+            <option value="1jo">1 John</option>
+            <option value="2jo">2 John</option>
+            <option value="3jo">3 John</option>
+            <option value="jd">Jude</option>
+            <option value="ap">Revelation</option>
+        </select>
+
+        <input type="number" id="chapter" name="chapter" min="1" value="1">
+        <input type="number" id="verse" name="verse" min="1" value="1">
+
+        <button type="submit">Add verse</button>
+
+    </form>
+    
+    <script src="app.js"></script>
+
+</body>
+
+
+</html>
