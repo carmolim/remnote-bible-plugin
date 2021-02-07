@@ -1,10 +1,12 @@
 const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IlNhdCBGZWIgMDYgMjAyMSAyMTozMzoyNCBHTVQrMDAwMC5jYXJtb2xpbUBnbWFpbC5jb20iLCJpYXQiOjE2MTI2NDcyMDR9.VDrvFvzd6Ld4QXgSOVzJHqFIpcudgTffGRBwneqhNrc';
 const api = 'https://www.abibliadigital.com.br/api/verses';
-const $title = document.getElementById('title');
+const $appVersion = document.getElementById('app-version');
 const $form  = document.getElementById('search');
 
 const $book = document.getElementById('book');
 $book.focus();
+
+$appVersion.innerHTML = '0.0.1';
 
 $form.addEventListener( 'submit', async (e)=>{
 
@@ -21,16 +23,11 @@ $form.addEventListener( 'submit', async (e)=>{
 
     const url = `${api}/${version}/${bookShort}/${chapter}/${verse}`;
     
-    let options;
-
-    if(token){
-        
-        options = {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
-            }
+    let options = {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
         }
     }
 

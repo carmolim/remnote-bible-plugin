@@ -1,0 +1,18 @@
+body{
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+.app-version{
+    font-size: 12px;
+    color:#ccc;
+}
+
+#search{
+    display: flex;
+    flex-direction: column;
+}
+
+input, select, button{
+    margin-bottom: 16px;
+    height: 32px;
+}
