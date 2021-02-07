@@ -38,8 +38,7 @@ $form.addEventListener( 'submit', async (e)=>{
         .then(response => response.text())
         .then(async (result) =>{
             text = JSON.parse(result).text;
-            console.log(text + ' ['+ book + ' ' + chapter + ':' + verse + '](https://www.bibliaonline.com.br/' + version + '/' + bookShort + '/' + chapter + '/' + verse + ')');
-            // await addToDoc( text + ' ['+ book + ' ' + chapter + ':' + verse + '](https://www.bibliaonline.com.br/' + version + '/' + bookShort + '/' + chapter + '/' + verse + ')'); 
+            await addToDoc( text + ' ['+ book + ' ' + chapter + ':' + verse + '](https://www.bibliaonline.com.br/' + version + '/' + bookShort + '/' + chapter + '/' + verse + ')'); 
         })
         .catch(error => console.error('error', error));
 });
