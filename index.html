@@ -16,15 +16,15 @@
 
     <form id="search">
 
-        <select id="version" id="version" name="version" id="">
+        <select id="version" id="version" name="version" id="" required>
             <option value="kjv">King James Version</option>
-            <option value="bbe">Bible in Basic English</option>
             <option value="acf">Almeida Corrigida Fiel</option>
             <option value="nvi">Nova Versão internacional</option>
+            <option value="bbe">Bible in Basic English</option>
             <option value="apee">La Bible de l'Épée</option>
         </select>
 
-        <select id="book" name="book">
+        <select id="book" name="book" required>
             <option value="">Select a book</option>
             <option value="gn">Genesis</option>
             <option value="ex">Exodus</option>
@@ -94,7 +94,7 @@
             <option value="ap">Revelation</option>
         </select>
 
-        <input type="number" id="chapter" name="chapter" min="1" value="1">
+        <input type="number" id="chapter" name="chapter" min="1" value="1" required>
         <input type="number" id="verse" name="verse" min="1" value="1">
 
         <button type="submit">Add verse</button>
