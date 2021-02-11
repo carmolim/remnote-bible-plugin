@@ -6,7 +6,15 @@ const $form  = document.getElementById('search');
 const $book = document.getElementById('book');
 $book.focus();
 
-$appVersion.innerHTML = '0.0.1';
+$appVersion.innerHTML = '0.0.2';
+
+const preferredVersion = getCookie('bibleVersion');
+
+if(preferredVersion){
+    document.getElementById('version').value = preferredVersion;
+}
+
+setCookie('last', 'agora', 30);
 
 $form.addEventListener( 'submit', async (e)=>{
 
@@ -21,6 +29,8 @@ $form.addEventListener( 'submit', async (e)=>{
     verse = document.getElementById('verse').value;
     book = bookSel.options[bookSel.selectedIndex].text;
 
+    setCookie('bibleVersion', version, 30);
+
     const url = `${api}/${version}/${bookShort}/${chapter}/${verse}`;
     
     let options = {
@@ -34,8 +44,23 @@ $form.addEventListener( 'submit', async (e)=>{
     fetch( url, options )
         .then(response => response.text())
         .then(async (result) =>{
-            text = JSON.parse(result).text;
-            await addToDoc( text + ' ['+ book + ' ' + chapter + ':' + verse + '](https://www.bibliaonline.com.br/' + version + '/' + bookShort + '/' + chapter + '/' + verse + ')'); 
+
+            data = JSON.parse(result);
+            text = data.text;
+
+            if( version == 'acf' || version == 'nvi'){
+
+                book = data.book.name;
+                await addToDoc( text + ' ['+ book + ' ' + chapter + ':' + verse + ' - ' + version.toUpperCase() + '](https://www.bibliaonline.com.br/' + version + '/' + bookShort + '/' + chapter + '/' + verse + ')'); 
+
+            }
+
+            else{
+
+                await addToDoc( text + ' ['+ book + ' ' + chapter + ':' + verse + ' - ' + version.toUpperCase() + '](https://www.bibliaonline.com.br/' + version + '/' + bookShort + '/' + chapter + '/' + verse + ')'); 
+
+            }
+
         })
         .catch(error => console.error('error', error));
 });
@@ -60,4 +85,29 @@ async function addToDoc(text) {
     }
 
     await RemNoteAPI.v0.close_popup();
+}
+
+function setCookie(name,value,days) {
+    var expires = "";
+    if (days) {
+        var date = new Date();
+        date.setTime(date.getTime() + (days*24*60*60*1000));
+        expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + (value || "")  + expires + "; path=/; SameSite=None; Secure";
+}
+
+function getCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0;i < ca.length;i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1,c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+    }
+    return null;
+}
+
+function eraseCookie(name) {   
+    document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
 }
